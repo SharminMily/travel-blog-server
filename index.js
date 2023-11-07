@@ -28,9 +28,17 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
         const categoryCollection = client.db('travelBlog').collection('category');
+        const allDataCollection = client.db('travelBlog').collection('allData');
 
         app.get('/category', async(req, res) => {
             const cursor = categoryCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // All data
+        app.get('/allData', async(req, res) => {
+            const cursor = allDataCollection.find();
             const result = await cursor.toArray();
             res.send(result);
         })
