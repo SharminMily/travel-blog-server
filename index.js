@@ -10,7 +10,6 @@ app.use(cors({
     origin: ['http://localhost:5173'],
     credentials: true
 }));
-app.options("", cors(corsConfig))
 
 // app.use(cors({
 //     origin:["local url", "live url"]
