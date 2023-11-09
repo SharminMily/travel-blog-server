@@ -7,14 +7,16 @@ const port = process.env.PORT || 5000;
 
 //middleware 
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: [
+    'http://localhost:5173',
+    'https://travel-blog-client.web.app',
+    'https://travel-blog-client.firebaseapp.com'
+    
+],
     credentials: true
 }));
 
-// app.use(cors({
-//     origin:["local url", "live url"]
-//     })
-//     )
+
 app.use(express.json());
 
 
@@ -34,7 +36,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        // await client.connect();
+     
         const categoryCollection = client.db('travelBlog').collection('category');
         const allDataCollection = client.db('travelBlog').collection('allData');
 
